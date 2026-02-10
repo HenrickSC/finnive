@@ -16,8 +16,8 @@ export function AddTransactionModal({ isOpen, onClose }: ModalProps) {
   // Se o modal estiver fechado, não renderiza nada
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e: React.SyntheticEvent) => {
+  e.preventDefault();
     
     // Aqui criamos o objeto que seria enviado para o seu banco ou lista
     const newTransaction = {
