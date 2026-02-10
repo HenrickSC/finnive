@@ -1,20 +1,13 @@
 import { mockTransactions, mockStats } from '@/lib/mocks';
 import { BalanceCard } from '@/components/BalanceCard';
 import { TransactionItem } from '@/components/TransactionItem';
+import { Header } from '@/components/Header';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50 p-6 font-sans pb-24">
       {/* Header com Saudação */}
-      <header className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-2xl font-bold text-indigo-900 tracking-tight">Finnive</h1>
-          <p className="text-gray-500 text-sm">Olá, Henrique!</p>
-        </div>
-        <div className="w-12 h-12 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 font-bold border-2 border-white shadow-sm">
-          H
-        </div>
-      </header>
+      <Header />
 
       {/* Card de Saldo Total (Destaque) */}
       <BalanceCard stats={mockStats} />
