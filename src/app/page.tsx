@@ -1,4 +1,6 @@
 import { mockTransactions, mockStats } from '@/lib/mocks';
+import { BalanceCard } from '@/components/BalanceCard';
+import { TransactionItem } from '@/components/TransactionItem';
 
 export default function Home() {
   return (
@@ -15,16 +17,7 @@ export default function Home() {
       </header>
 
       {/* Card de Saldo Total (Destaque) */}
-      <section className="bg-indigo-600 rounded-[2.5rem] p-8 text-white shadow-2xl shadow-indigo-200 mb-10 relative overflow-hidden">
-        <div className="relative z-10">
-          <p className="text-indigo-100 text-xs font-medium uppercase tracking-wider mb-1 opacity-80">Saldo disponível</p>
-          <h2 className="text-4xl font-extrabold tracking-tight">
-            R$ {mockStats.totalBalance.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-          </h2>
-        </div>
-        {/* Enfeite visual no card */}
-        <div className="absolute -right-10 -top-10 w-40 h-40 bg-indigo-500 rounded-full opacity-20"></div>
-      </section>
+      <BalanceCard stats={mockStats} />
 
       {/* Seção de Transações */}
       <section>
@@ -35,20 +28,7 @@ export default function Home() {
         
         <div className="space-y-4">
           {mockTransactions.map((item) => (
-            <div key={item.id} className="bg-white p-5 rounded-[1.5rem] flex justify-between items-center shadow-sm border border-gray-100">
-              <div className="flex items-center gap-4">
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${item.type === 'income' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}`}>
-                  {item.type === 'income' ? '↓' : '↑'}
-                </div>
-                <div>
-                  <p className="font-bold text-gray-800 text-sm">{item.description}</p>
-                  <p className="text-xs text-gray-400">{item.category}</p>
-                </div>
-              </div>
-              <span className={`font-bold ${item.type === 'income' ? 'text-green-500' : 'text-gray-800'}`}>
-                {item.type === 'income' ? '+' : '-'} R$ {item.amount.toFixed(2)}
-              </span>
-            </div>
+            <TransactionItem key={item.id} transaction={item} />
           ))}
         </div>
       </section>
