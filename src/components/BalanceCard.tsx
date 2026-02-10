@@ -11,7 +11,7 @@ export function BalanceCard({ stats }: BalanceCardProps) {
         <p className="text-indigo-100 text-xs font-medium uppercase tracking-wider mb-1 opacity-80">
           Saldo disponível
         </p>
-        <h2 className="text-4xl font-extrabold tracking-tight">
+        <h2 className="text-3xl font-extrabold tracking-tight">
           R$ {stats.totalBalance.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
         </h2>
       </div>
